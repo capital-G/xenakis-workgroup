@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sieves &#8212; Iannis Xenakis workgroup</title>
+    <title>Sieve Theory &#8212; Iannis Xenakis workgroup</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,9 +53,13 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bibliography" href="bib.html" />
     <link rel="prev" title="Iannis Xenakis learn-group" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -90,7 +96,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Sieves
+   Sieve Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bib.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -175,6 +186,31 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#congruency">
+   Congruency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scales">
+   Scales
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scales-and-set-theory">
+     Scales and set theory
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -183,8 +219,207 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sieves">
-<h1>Sieves<a class="headerlink" href="#sieves" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="sieve-theory">
+<h1>Sieve Theory<a class="headerlink" href="#sieve-theory" title="Permalink to this headline">¶</a></h1>
+<p>The usage of sieves is first mentioned in <span id="id1">[<a class="reference internal" href="bib.html#id2">Xen92</a>]</span> in the chapter <em>Towards a Metmusic</em> and this technique is used to construct scales.</p>
+<p>The chapter starts with a definition for a <em>tempered chromatic scale</em> much similiar to the <a class="reference external" href="https://en.wikipedia.org/wiki/Peano_axioms">Peano axioms</a> in mathematics which serves as axioms on the natural numbers.
+This scale is not limited to pitch but can also account for parameters such as denisity or intensity.</p>
+<div class="section" id="congruency">
+<h2>Congruency<a class="headerlink" href="#congruency" title="Permalink to this headline">¶</a></h2>
+<p>Another definition which is important for the contsruction of sieves is <a class="reference external" href="https://en.wikipedia.org/wiki/Modular_arithmetic"><em>congruence</em></a>.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Two integers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(n\)</span> are said to be congruent modulo <span class="math notranslate nohighlight">\(m\)</span> when <span class="math notranslate nohighlight">\(m\)</span> is a factor of <span class="math notranslate nohighlight">\(x-n\)</span>.
+We write this down as <span class="math notranslate nohighlight">\(x \equiv n \mod m\)</span>.</p>
+</div>
+<p>Some examples are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+4 \equiv 19 &amp;\mod 5\\
+13 \equiv 5 &amp;\mod 8\\
+14 \equiv 0 &amp;\mod 7
+\end{align}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="mi">19</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; 4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="mi">13</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; 5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="mi">14</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>For <span class="math notranslate nohighlight">\(m, n, \in \mathbb{N}\)</span> every <span class="math notranslate nohighlight">\(n\)</span> is mapped to a <span class="math notranslate nohighlight">\(i \in \mathbb{N}\)</span> which fulfills <span class="math notranslate nohighlight">\(i \mod m\)</span> where <span class="math notranslate nohighlight">\(i \in R = \lbrace 0, 1, \dots, m-1 \rbrace\)</span>.
+We define the set <span class="math notranslate nohighlight">\(R\)</span> as the set of <em>residual classes</em> and <span class="math notranslate nohighlight">\(m_i = \lbrace n | n \equiv i \mod m \rbrace\)</span>.
+We note that the cardinality of <span class="math notranslate nohighlight">\(R\)</span> must not be equal to <span class="math notranslate nohighlight">\(m\)</span>, e.g. for <span class="math notranslate nohighlight">\(x \in \mathbb{N}\)</span> the residual class for <span class="math notranslate nohighlight">\(x^2 \mod 6\)</span> is <span class="math notranslate nohighlight">\(R = \lbrace 0, 1, 3, 4 \rbrace\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">12</span><span class="p">).</span><span class="nx">collect</span><span class="p">({</span><span class="o">|</span><span class="nx">i</span><span class="o">|</span> <span class="nx">i</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">3</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; [ 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">30</span><span class="p">).</span><span class="nx">collect</span><span class="p">({</span><span class="o">|</span><span class="nx">i</span><span class="o">|</span> <span class="nx">i</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">asInteger</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">6</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; [ 0, 1, 4, 3, 4, 1, 0, 1, 4, 3, 4, 1, 0, 1, 4, 3, 4, 1, 0, 1, 4, 3, 4, 1, 0, 1, 4, 3, 4, 1, 0 ]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scales">
+<h2>Scales<a class="headerlink" href="#scales" title="Permalink to this headline">¶</a></h2>
+<p>Xenakis uses a residual class <span class="math notranslate nohighlight">\(m_i\)</span> where <span class="math notranslate nohighlight">\(m\)</span> is the starting point in the chromatic scale and <span class="math notranslate nohighlight">\(i\)</span> is the residual class (or step size).
+For now lets assume the 12 ET chromatic scale starting from <span class="math notranslate nohighlight">\(\text{C}\)</span> and inspect the example from the book</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+4_0 &amp;= \lbrace 0, 4, 8 \rbrace = \lbrace \text{C, E, G#} \rbrace\\
+4_1 &amp;= \lbrace 1, 5, 9 \rbrace = \lbrace \text{C#, F, A} \rbrace\\
+4_2 &amp;= \lbrace 2, 6, 10 \rbrace = \lbrace \text{D, F#, A#} \rbrace\\
+4_3 &amp;= \lbrace 3, 7, 11 \rbrace = \lbrace \text{D#, G, B} \rbrace\\
+\end{align}
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(4_4 = 4_0\)</span> as this will repeat the same residuals.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">3</span><span class="p">).</span><span class="nx">collect</span><span class="p">({</span><span class="o">|</span><span class="nx">i</span><span class="o">|</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">11</span><span class="p">).</span><span class="nx">select</span><span class="p">({</span><span class="o">|</span><span class="nx">j</span><span class="o">|</span>
+        <span class="nx">j</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">==</span><span class="nx">i</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; [ [ 0, 4, 8 ], [ 1, 5, 9 ], [ 2, 6, 10 ], [ 3, 7, 11 ] ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scales-and-set-theory">
+<h3>Scales and set theory<a class="headerlink" href="#scales-and-set-theory" title="Permalink to this headline">¶</a></h3>
+<p>By using <a class="reference external" href="https://en.wikipedia.org/wiki/Set_theory">set theory</a> we can combine these residual classes to construct a variety of scales.
+Most important are the terms <em>union</em>, <em>intersection</em> and <em>complement</em> which we will define as follows:</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be sets.</p>
+<ul class="simple">
+<li><p>The <em>union</em> of the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> (written as <span class="math notranslate nohighlight">\(A \cup B\)</span>) contains all elements from <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, so</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A \cup B := \lbrace c | c \in A \lor c \in B  \rbrace
+\]</div>
+<ul class="simple">
+<li><p>The <em>intersection</em> of the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> (written as <span class="math notranslate nohighlight">\(A \cap B\)</span>) contains all elements that are both in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, so</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A \cap B := \lbrace c | c \in A \land c \in B \rbrace
+\]</div>
+<ul class="simple">
+<li><p>The <em>complement</em> of a set <span class="math notranslate nohighlight">\(A\)</span> (written as <span class="math notranslate nohighlight">\(A^c\)</span> or <span class="math notranslate nohighlight">\(\overline{A}\)</span>) contains all elements that are not in <span class="math notranslate nohighlight">\(A\)</span>, so</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\overline{A} = \lbrace c | c \notin A \rbrace
+\]</div>
+</div>
+<p>A Venn diagram helps to understand these basic set operations.</p>
+<p>Lets construct 2 scales via residual classes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+2_0 &amp;= \lbrace 0, 2, 4, 6, 8, 10 \rbrace = \lbrace \text{C, D, E, F#, G#, A#} \rbrace\\
+2_1 &amp;= \lbrace 1, 3, 5, 7, 9, 11 \rbrace = \lbrace \text{C#, D#, F, G, A, B} \rbrace
+\end{align}
+\end{split}\]</div>
+<p>which both are the possible both tone scales in 12ET.</p>
+<ul class="simple">
+<li><p>The union <span class="math notranslate nohighlight">\(2_0 \cup 2_1 = \lbrace \text{C, C#, D, D#, E, F, F#, G, G#, A, A#, B} \rbrace\)</span> is simply the 12ET we started with.</p></li>
+<li><p>The intersection <span class="math notranslate nohighlight">\(2_0, \cap 2_1 = \emptyset\)</span> is the empty set as both scales do not share any notes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overline{2_0} = 2_1 = \lbrace \text{C#, D#, F, G, A, B} \rbrace\)</span> as both scales are complementary.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">11</span><span class="p">).</span><span class="nx">select</span><span class="p">({</span><span class="o">|</span><span class="nx">i</span><span class="o">|</span> <span class="nx">i</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">}).</span><span class="nx">asSet</span><span class="p">;</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">11</span><span class="p">).</span><span class="nx">select</span><span class="p">({</span><span class="o">|</span><span class="nx">i</span><span class="o">|</span> <span class="nx">i</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">}).</span><span class="nx">asSet</span><span class="p">;</span>
+<span class="s2">&quot;Set A: % \t Set B: %&quot;</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">).</span><span class="nx">postln</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Set A: Set[ 8, 4, 0, 2, 6, 10 ] 	 Set B: Set[ 1, 3, 5, 9, 7, 11 ]
+-&gt; Set A: Set[ 8, 4, 0, 2, 6, 10 ] 	 Set B: Set[ 1, 3, 5, 9, 7, 11 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">a</span><span class="p">.</span><span class="nx">union</span><span class="p">(</span><span class="nx">b</span><span class="p">).</span><span class="nx">asArray</span><span class="p">.</span><span class="nx">sort</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">a</span><span class="p">.</span><span class="nx">sect</span><span class="p">(</span><span class="nx">b</span><span class="p">).</span><span class="nx">asArray</span><span class="p">.</span><span class="nx">sort</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; [  ]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -210,22 +445,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="README.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Iannis Xenakis learn-group</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Iannis Xenakis learn-group</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="bib.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -246,8 +481,7 @@
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
