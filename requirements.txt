@@ -1,0 +1,4 @@
+jupyter-book
+jupyterlab
+sc-kernel
+pre-commit
