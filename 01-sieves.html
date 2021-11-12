@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bibliography" href="bib.html" />
-    <link rel="prev" title="Iannis Xenakis learn-group" href="README.html" />
+    <link rel="prev" title="Overview" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -89,7 +89,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="README.html">
-   Iannis Xenakis learn-group
+   Overview
   </a>
  </li>
 </ul>
@@ -343,14 +343,14 @@ Most important are the terms <em>union</em>, <em>intersection</em> and <em>compl
 <p class="admonition-title">Definition</p>
 <p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be sets.</p>
 <ul class="simple">
-<li><p>The <em>union</em> of the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> (written as <span class="math notranslate nohighlight">\(A \cup B\)</span>) contains all elements from <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, so</p></li>
+<li><p>The <em>union</em> of the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> (written as <span class="math notranslate nohighlight">\(A \cup B\)</span>, Xenakis uses <span class="math notranslate nohighlight">\(A \lor B\)</span>) contains all elements from <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, so</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 A \cup B := \lbrace c | c \in A \lor c \in B  \rbrace
 \]</div>
 <ul class="simple">
-<li><p>The <em>intersection</em> of the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> (written as <span class="math notranslate nohighlight">\(A \cap B\)</span>) contains all elements that are both in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, so</p></li>
+<li><p>The <em>intersection</em> of the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> (written as <span class="math notranslate nohighlight">\(A \cap B\)</span>, Xenakis uses <span class="math notranslate nohighlight">\(A \land B\)</span>) contains all elements that are both in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, so</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -418,6 +418,105 @@ A \cap B := \lbrace c | c \in A \land c \in B \rbrace
 </div>
 </div>
 </div>
+<p>On page 196 Xenakis constructs the major scale via</p>
+<div class="math notranslate nohighlight">
+\[
+(\overline{3_2} \land 4_0) \lor (\overline{3_1} \land 4_1) \lor (3_2 \land 4_2) \lor (\overline{3_0} \land 4_3)
+\]</div>
+<p>which we also want to implement in SC.
+Instead of repeating the aproach from above and repeating the same steps over and over again we will write a function which we will call to generate the appropiate set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">f</span> <span class="o">=</span> <span class="p">{</span><span class="o">|</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">unity</span><span class="o">=</span><span class="kc">true</span><span class="o">|</span>
+    <span class="c1">// we go through all 12 tones of our ET chromatic scale</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">11</span><span class="p">).</span><span class="nx">select</span><span class="p">({</span><span class="o">|</span><span class="nx">k</span><span class="o">|</span>
+        <span class="c1">// if unity is false we will return the complementary</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">unity</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">k</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">==</span><span class="nx">j</span><span class="p">;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="nx">k</span><span class="p">.</span><span class="nx">mod</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">!=</span><span class="nx">j</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}).</span><span class="nx">asSet</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; a Function
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can simply use the <code class="docutils literal notranslate"><span class="pre">sect</span> <span class="pre">(&amp;)</span></code> and <code class="docutils literal notranslate"><span class="pre">union</span> <span class="pre">(|)</span></code> methods of the <a class="reference external" href="https://doc.sccode.org/Classes/Set.html"><code class="docutils literal notranslate"><span class="pre">Set</span></code></a> class to construct the major scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">x</span> <span class="o">=</span> <span class="p">(</span><span class="nx">f</span><span class="p">.(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nx">f</span><span class="p">.(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="nx">f</span><span class="p">.(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nx">f</span><span class="p">.(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="nx">f</span><span class="p">.(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nx">f</span><span class="p">.(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="nx">f</span><span class="p">.(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nx">f</span><span class="p">.(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; Set[ 5, 0, 9, 7, 4, 2, 11 ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>After we boot the server we can use a <code class="docutils literal notranslate"><span class="pre">Pdef</span></code> to play back the scale to us.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">s</span><span class="p">.</span><span class="nx">boot</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; localhost
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">Ndef</span><span class="p">(</span><span class="ss">\scale</span><span class="p">,</span> <span class="nx">Pbind</span><span class="p">(</span>
+    <span class="ss">\dur</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="ss">\note</span><span class="p">,</span> <span class="nx">Pseq</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">asArray</span><span class="p">.</span><span class="nx">sort</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">)).</span><span class="nx">play</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; Ndef(&#39;scale&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And indeed it is the major scale.</p>
+<p>As we now know how to construct scales via sieves we can try out some scales which are not based on the congruence classes of <span class="math notranslate nohighlight">\(4\)</span> and <span class="math notranslate nohighlight">\(3\)</span> (which are taken for symmetry reasons which allow for transposing the scales easily as discussed in the book) or permuting scales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-supercollider notranslate"><div class="highlight"><pre><span></span><span class="nx">Tdef</span><span class="p">(</span><span class="ss">\scalePlayer</span><span class="p">,</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">..</span><span class="mi">4</span><span class="p">).</span><span class="k">do</span><span class="p">({</span><span class="o">|</span><span class="nx">i</span><span class="o">|</span>
+        <span class="c1">// modify the scale construction</span>
+        <span class="kd">var</span> <span class="nx">scale</span> <span class="o">=</span> <span class="nx">f</span><span class="p">.(</span><span class="mi">4</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">|</span> <span class="nx">f</span><span class="p">.(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="o">-</span><span class="nx">i</span><span class="p">);</span>
+        <span class="nx">scale</span> <span class="o">=</span> <span class="nx">scale</span><span class="p">.</span><span class="nx">asArray</span><span class="p">.</span><span class="nx">sort</span><span class="p">;</span>
+        
+        <span class="p">[</span><span class="s2">&quot;scale&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">scale</span><span class="p">].</span><span class="nx">postln</span><span class="p">;</span>
+        <span class="nx">scale</span><span class="p">.</span><span class="k">do</span><span class="p">({</span><span class="o">|</span><span class="nx">note</span><span class="o">|</span>
+            <span class="p">(</span><span class="nx">note</span><span class="o">:</span> <span class="nx">note</span><span class="p">,</span> <span class="nx">dur</span><span class="o">:</span> <span class="mf">0.125</span><span class="p">).</span><span class="nx">play</span><span class="p">;</span>
+            <span class="mf">0.125</span><span class="p">.</span><span class="nx">wait</span><span class="p">;</span>
+        <span class="p">});</span>
+        <span class="mf">0.25</span><span class="p">.</span><span class="nx">wait</span><span class="p">;</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">play</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; Tdef(&#39;scalePlayer&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that for the exsiting examples we limited ourselves to the 12 ET chromatic scale but the usage of sieves is not limited to this scale.
+We can construct sieves with any kind of scale that can be expressed as well ordered set of <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinal_number">Ordinals</a>.</p>
 </div>
 </div>
 </div>
@@ -451,7 +550,7 @@ A \cap B := \lbrace c | c \in A \land c \in B \rbrace
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Iannis Xenakis learn-group</p>
+            <p class="prev-next-title">Overview</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="bib.html" title="next page">
