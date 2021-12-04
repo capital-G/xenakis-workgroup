@@ -5,4 +5,5 @@ format: jb-book
 root: README
 chapters:
 - file: 01-sieves
+- file: 02-random-walk
 - file: bib.rst
