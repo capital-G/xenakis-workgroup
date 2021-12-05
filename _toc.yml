@@ -6,4 +6,5 @@ root: README
 chapters:
 - file: 01-sieves
 - file: 02-random-walk
+- file: 03-dynamic-stochastic-synthesis
 - file: bib.rst
