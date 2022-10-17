@@ -7,4 +7,5 @@ chapters:
 - file: 01-sieves
 - file: 02-random-walk
 - file: 03-dynamic-stochastic-synthesis
+- file: concert.md
 - file: bib.rst
