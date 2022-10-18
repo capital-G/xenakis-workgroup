@@ -9,7 +9,6 @@
 In honor of the 100th birthday of composer and architect Ιάννης Ξενάκης there will be a concert on tuesday, **2022-10-25 at 19:00** at the parking garage of the IMM Düsseldorf.
 The program consists of compositions by Xenakis himself as well as works that were inspired by him.
 
-
 ## Aachorripsis (recalculated)
 
 *Live electronics for 7 channels (7')*
@@ -31,13 +30,13 @@ Xenakis about *Aachoripsis* in {cite}`Xenakis1992`:
 
 ## TrainsGrainsRains
 
-*Fixed media, stereo, 15'*
+*Fixed media, stereo (15')*
 
 By Jiawen Wang.
 
 ## Aachorripsis (re-recalculated)
 
-*Live electronics for 7 channels*
+*Live electronics for 7 channels (7')*
 
 By Iannis Xenakis (remixed)
 
@@ -61,7 +60,7 @@ Anhand der Programmiersprache SuperCollider wird diese winzige, kaum wahrnehmbar
 
 ## Voyage Absolu Des Unari Vers Andromède
 
-*Fixed media, stereo - 16'*
+*Fixed media, stereo (16')*
 
 ```{figure} ./assets/andromeda.jpg
 :name: Andromeda
@@ -79,7 +78,7 @@ This allows for a more controlled approach than the later GENDY algorithm.
 
 [^upic]: UPIC (Unite Polyagoqique Informatique du CEMAMu) is a computer system which lets one compose music simply by the graphic design of pages. The UPIC system was created and produced at CEMAMu.
 
-## untitled
+## OH × O²H
 
 *Live electronics for 8 speakers (10')*
 
