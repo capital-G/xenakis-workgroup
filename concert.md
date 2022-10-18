@@ -29,7 +29,7 @@ Xenakis about *Aachoripsis* in {cite}`Xenakis1992`:
 >
 > In fact, the data will appear aleatory only at the first hearing. Then, during successive rehearings the relations between the events of the sample ordained by "chance" will form a network, which will take on a definite meaning in the mind of the listener, and will initiate a special "logic," a new cohesion capable of satisfying his intellect as well as his aesthetic sense; that is, if the artist has a certain flair.
 
-## untitled
+## TrainsGrainsRains
 
 *Fixed media, stereo, 15'*
 
@@ -43,11 +43,21 @@ By Iannis Xenakis (remixed)
 
 Another calculation of Aachoripsis.
 
-## untitled
+## From two roots
 
-*20'*
+*Quadrophonic computermusic (20')*
 
 By Shuoxin Tan
+
+```{figure} ./assets/two-roots.jpg
+:name: From two roots
+:scale: 50%
+
+$25 \sqrt{5}$ vs. $12 \sqrt{2}$
+```
+
+Die algorithmische Computermusik-Komposition basiert auf zwei mathematischen Zahlen (Wurzeln), die für zwei unterschiedliche gleichstufig temperierte Stimmungssysteme stehen: $12 \sqrt{2}$ aus der traditionellen Stimmung und $25 \sqrt{5}$ aus der elektronischen Musikkomposition *Studie II* von Karlheinz Stockhausen.
+Anhand der Programmiersprache SuperCollider wird diese winzige, kaum wahrnehmbare Differenz von zwei Wurzeln auf die Mikrotonalität angewendet und die Zahlen als Grundproportionen aller Klangcharaktere wie Frequenz, Hüllkurve, Tondauer, Lautstärke usw. mittels Sinustöne vertont.
 
 ## Voyage Absolu Des Unari Vers Andromède
 
@@ -71,9 +81,13 @@ This allows for a more controlled approach than the later GENDY algorithm.
 
 ## untitled
 
-*Live electronics for 8 speakers*
+*Live electronics for 8 speakers (10')*
 
 By Julian Rohrhuber.
+
+## Break
+
+Around 20 minutes.
 
 ## Persepolis
 
