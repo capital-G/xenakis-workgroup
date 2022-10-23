@@ -46,6 +46,12 @@ The source code for the performance is located at <https://github.com/capital-G/
 
 By Jiawen Wang.
 
+```{figure} ./assets/trainsgrainsrains.png
+:name: trainsgrainsrains
+
+trainsgrainsrains
+```
+
 ## From two roots
 
 *Quadrophonic computermusic (20')*
