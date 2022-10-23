@@ -329,11 +329,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aachorripsis-re-recalculated">
-   Aachorripsis (re-recalculated)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#from-two-roots">
    From two roots
   </a>
@@ -388,11 +383,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aachorripsis-re-recalculated">
-   Aachorripsis (re-recalculated)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#from-two-roots">
    From two roots
   </a>
@@ -442,24 +432,28 @@ The program consists of compositions by Xenakis himself as well as works that we
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">The original calculation matrix for Aachoripsis - taken from <span id="id1">[<a class="reference internal" href="bib.html#id2" title="Iannis Xenakis. Formalized Music - Thought and Mathematics in Composition. Pendragon Press, New York, edition, 1992. ISBN 978-1-576-47079-4.">Xen92</a>]</span>.</span><a class="headerlink" href="#aachoripsis" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<figure class="align-default" id="aachoripsis-recalculated">
+<img alt="_images/aachorripsis-recalculated.png" src="_images/aachorripsis-recalculated.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The re-implementation of density matrix of Aachoripsis in SuperCollider.</span><a class="headerlink" href="#aachoripsis-recalculated" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><em>Aachoripsis</em> (1957) is the second composition by Iannis Xenakis which is driven by stochastic calculations.
-For this concert Iosif Tournas and Dennis Scheiba re-implemented the idea of using the poisson probability distribution to distribute musical events in a score using the notes which Xenakis wrote in Formalized Music <span id="id2">[<a class="reference internal" href="bib.html#id2" title="Iannis Xenakis. Formalized Music - Thought and Mathematics in Composition. Pendragon Press, New York, edition, 1992. ISBN 978-1-576-47079-4.">Xen92</a>]</span>.</p>
+For this concert Iosif Tournas and Dennis Scheiba re-implemented the idea of using the poisson probability distribution to distribute musical events in a score using the notes which Xenakis wrote in Formalized Music <span id="id2">[<a class="reference internal" href="bib.html#id2" title="Iannis Xenakis. Formalized Music - Thought and Mathematics in Composition. Pendragon Press, New York, edition, 1992. ISBN 978-1-576-47079-4.">Xen92</a>]</span> and use this musical events to
+trigger events on two modular systems.</p>
+<p>The poisson distribution is often used to model the probability of events that will happen within a fixed time slot if these events should occur at an average rate.
+Examples of application of the poisson distribution are how many popcorns will pop over time when put into a microwave (they don’t pop all together at the exact same time, yet they all happen around the same time) or radioactive decay.</p>
 <p>Xenakis about <em>Aachoripsis</em> in <span id="id3">[<a class="reference internal" href="bib.html#id2" title="Iannis Xenakis. Formalized Music - Thought and Mathematics in Composition. Pendragon Press, New York, edition, 1992. ISBN 978-1-576-47079-4.">Xen92</a>]</span>:</p>
 <blockquote>
 <div><p>Now the question is, when heard a number of times, will this music keep its surprise effect? Will it not change into a set of foreseeable phenomena through the existence of memory, despite the fact that the law of frequencies has been derived from the laws of chance?</p>
 <p>In fact, the data will appear aleatory only at the first hearing. Then, during successive rehearings the relations between the events of the sample ordained by “chance” will form a network, which will take on a definite meaning in the mind of the listener, and will initiate a special “logic,” a new cohesion capable of satisfying his intellect as well as his aesthetic sense; that is, if the artist has a certain flair.</p>
 </div></blockquote>
+<p>The source code for the performance is located at <a class="reference external" href="https://github.com/capital-G/Aachorripsis">https://github.com/capital-G/Aachorripsis</a>.</p>
 </section>
 <section id="trainsgrainsrains">
 <h2>TrainsGrainsRains<a class="headerlink" href="#trainsgrainsrains" title="Permalink to this headline">#</a></h2>
-<p><em>Fixed media, stereo (15’)</em></p>
+<p><em>Live computer algorithm, 8 channels (15’)</em></p>
 <p>By Jiawen Wang.</p>
-</section>
-<section id="aachorripsis-re-recalculated">
-<h2>Aachorripsis (re-recalculated)<a class="headerlink" href="#aachorripsis-re-recalculated" title="Permalink to this headline">#</a></h2>
-<p><em>Live electronics for 7 channels (7’)</em></p>
-<p>By Iannis Xenakis (remixed)</p>
-<p>Another calculation of Aachoripsis.</p>
 </section>
 <section id="from-two-roots">
 <h2>From two roots<a class="headerlink" href="#from-two-roots" title="Permalink to this headline">#</a></h2>
@@ -468,7 +462,7 @@ For this concert Iosif Tournas and Dennis Scheiba re-implemented the idea of usi
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/two-roots.jpg"><img alt="_images/two-roots.jpg" src="_images/two-roots.jpg" style="width: 567.0px; height: 732.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text"><span class="math notranslate nohighlight">\(25 \sqrt{5}\)</span> vs. <span class="math notranslate nohighlight">\(12 \sqrt{2}\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><span class="math notranslate nohighlight">\(25 \sqrt{5}\)</span> vs. <span class="math notranslate nohighlight">\(12 \sqrt{2}\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Die algorithmische Computermusik-Komposition basiert auf zwei mathematischen Zahlen (Wurzeln), die für zwei unterschiedliche gleichstufig temperierte Stimmungssysteme stehen: <span class="math notranslate nohighlight">\(12 \sqrt{2}\)</span> aus der traditionellen Stimmung und <span class="math notranslate nohighlight">\(25 \sqrt{5}\)</span> aus der elektronischen Musikkomposition <em>Studie II</em> von Karlheinz Stockhausen.
@@ -480,7 +474,7 @@ Anhand der Programmiersprache SuperCollider wird diese winzige, kaum wahrnehmbar
 <figure class="align-default" id="andromeda">
 <img alt="_images/andromeda.jpg" src="_images/andromeda.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Drawing for synthetisation of Voyage absolu des Unari vers Andromède</span><a class="headerlink" href="#andromeda" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Drawing for synthetisation of Voyage absolu des Unari vers Andromède</span><a class="headerlink" href="#andromeda" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A lesser known electro-acoustic composition by Xenakis which uses the UPIC program for synthesis.
@@ -510,7 +504,7 @@ The score consists of pages designed on the UPIC<a class="footnote-reference bra
 <figure class="align-default" id="id7">
 <img alt="_images/persepolis.jpg" src="_images/persepolis.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Photo from <em>Polytope de Persepolis</em> spectacle (from <span id="id6">[<a class="reference internal" href="bib.html#id5" title="Iannis Xenakis and Sharon E. Kanach. Music and architecture: architectural projects, texts, and realizations. The Iannis Xenakis series. Pendragon Press, Hillsdale, NY, 2008. ISBN 978-1-57647-107-4.">XK08</a>]</span>)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Photo from <em>Polytope de Persepolis</em> spectacle (from <span id="id6">[<a class="reference internal" href="bib.html#id5" title="Iannis Xenakis and Sharon E. Kanach. Music and architecture: architectural projects, texts, and realizations. The Iannis Xenakis series. Pendragon Press, Hillsdale, NY, 2008. ISBN 978-1-57647-107-4.">XK08</a>]</span>)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As a prelude to <em>Persepolis</em> the composition <em>Diamorphoses</em> (1957, 7’) will be played as in the original presentation.</p>
