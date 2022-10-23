@@ -19,8 +19,19 @@ The program consists of compositions by Xenakis himself as well as works that we
 The original calculation matrix for Aachoripsis - taken from {cite}`Xenakis1992`.
 ```
 
+```{figure} ./assets/aachorripsis-recalculated.png
+:name: Aachoripsis recalculated
+
+The re-implementation of density matrix of Aachoripsis in SuperCollider.
+```
+
+
 *Aachoripsis* (1957) is the second composition by Iannis Xenakis which is driven by stochastic calculations.
-For this concert Iosif Tournas and Dennis Scheiba re-implemented the idea of using the poisson probability distribution to distribute musical events in a score using the notes which Xenakis wrote in Formalized Music {cite}`Xenakis1992`.
+For this concert Iosif Tournas and Dennis Scheiba re-implemented the idea of using the poisson probability distribution to distribute musical events in a score using the notes which Xenakis wrote in Formalized Music {cite}`Xenakis1992` and use this musical events to 
+trigger events on two modular systems.
+
+The poisson distribution is often used to model the probability of events that will happen within a fixed time slot if these events should occur at an average rate.
+Examples of application of the poisson distribution are how many popcorns will pop over time when put into a microwave (they don't pop all together at the exact same time, yet they all happen around the same time) or radioactive decay.
 
 Xenakis about *Aachoripsis* in {cite}`Xenakis1992`:
 
@@ -28,19 +39,13 @@ Xenakis about *Aachoripsis* in {cite}`Xenakis1992`:
 >
 > In fact, the data will appear aleatory only at the first hearing. Then, during successive rehearings the relations between the events of the sample ordained by "chance" will form a network, which will take on a definite meaning in the mind of the listener, and will initiate a special "logic," a new cohesion capable of satisfying his intellect as well as his aesthetic sense; that is, if the artist has a certain flair.
 
+The source code for the performance is located at <https://github.com/capital-G/Aachorripsis>.
+
 ## TrainsGrainsRains
 
 *Fixed media, stereo (15')*
 
 By Jiawen Wang.
-
-## Aachorripsis (re-recalculated)
-
-*Live electronics for 7 channels (7')*
-
-By Iannis Xenakis (remixed)
-
-Another calculation of Aachoripsis.
 
 ## From two roots
 
