@@ -25,7 +25,6 @@ The original calculation matrix for Aachoripsis - taken from {cite}`Xenakis1992`
 The re-implementation of density matrix of Aachoripsis in SuperCollider.
 ```
 
-
 *Aachoripsis* (1957) is the second composition by Iannis Xenakis which is driven by stochastic calculations.
 For this concert Iosif Tournas and Dennis Scheiba re-implemented the idea of using the poisson probability distribution to distribute musical events in a score using the notes which Xenakis wrote in Formalized Music {cite}`Xenakis1992` and use this musical events to 
 trigger events on two modular systems.
@@ -43,7 +42,7 @@ The source code for the performance is located at <https://github.com/capital-G/
 
 ## TrainsGrainsRains
 
-*Fixed media, stereo (15')*
+*Live computer algorithm, 8 channels (15')*
 
 By Jiawen Wang.
 
