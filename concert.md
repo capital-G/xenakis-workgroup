@@ -94,9 +94,11 @@ This allows for a more controlled approach than the later GENDY algorithm.
 
 By Julian Rohrhuber.
 
-When a molecule rotates alone in space, it do not continue to do so forever. Because its center of mass is never identical with the center of the electric charge, its rotation causes a movement of charge, which leads to an emission of light and a slowing down of the rotation. The emission is not continuous, however, but can occur only in specific frequency steps. These steps result from the mathematical combinatoric of rotational modes and the stretching and elasticity of the molecule. This process, thinned out and multiplied, is the light we can detect in interstellar nebula. Spectroscopy brings about the rich structure of the interaction between physical properties and mathematical properties of rotation groups, which also make an important ingredient of the compositions by Xenakis.
+When a molecule rotates alone in space, it does not continue to do so forever. Because its center of mass is never identical with the center of the electric charge, its rotation causes a movement of charge, which leads to an emission of light and a slowing down of the rotation. The emission is not continuous, however, but can occur only in specific frequency steps. These steps result from the mathematical combinatoric of rotational modes and the stretching and elasticity of the molecule. This process, thinned out and multiplied, is the light we can detect in interstellar nebula. Spectroscopy brings about the rich structure of the interaction between physical properties and mathematical properties of rotation groups, which also make an important ingredient of the compositions by Xenakis.
 
 The piece OH⁻ × O²H⁻ explores the spectra of two very similar two-atom molecules formed by oxygen (O), one with hydrogen (H) and one with its isotope deuterium (²H), which merely adds an extra neutron to the proton. Over the time of the piece, we traverse the far infrared spectra from high to low, frequency projected into time. We hear a crossing of the two spectra: lines of one spectrum trigger resonances in selected parts of the other, transposed into the audible range by the hydrogen emission line.
+
+Special thanks to Volker Ossenkopf-Okada.
 
 ## Break
 
