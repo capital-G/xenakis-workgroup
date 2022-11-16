@@ -90,7 +90,7 @@ This allows for a more controlled approach than the later GENDY algorithm.
 
 ## OH⁻ × O²H⁻
 
-*Live electronics for 8 speakers (10')*
+*Live electronics for 8 speakers (9'26")*
 
 By Julian Rohrhuber.
 
