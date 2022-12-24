@@ -416,15 +416,15 @@ This will then allow us to understand the notion of <em>2nd order random walk</e
 <p>The chapter is based on <span id="id1">[<a class="reference internal" href="bib.html#id3" title="Dennis Scheiba. Stochastik in der musik. Bachelorarbeit, oct 2015. Bachelorarbeit in Mathematics at Universität zu Köln.">Sch15</a>]</span> and <span id="id2">[<a class="reference internal" href="bib.html#id4" title="Sergio Luque. The stochastic synthesis of iannis xenakis. 2006. archive.org link. URL: https://web.archive.org/web/20110716042518/https://sergioluque.com/texts/Luque-The_Stochastic_Synthesis_of_Iannis_Xenakis.pdf.">Luq06</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Audio</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import pandas as pd
+from IPython.display import display, Audio
 
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+mpl.rcParams[&#39;figure.figsize&#39;] = (15, 5)
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+np.random.seed(42)
 </pre></div>
 </div>
 </div>
@@ -446,9 +446,9 @@ X_n = \sum_{i=1}^n Y_i
 <p>As we now have the formal definition we can try this out in practice by programming it in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 10 numbers of either -1 or 1</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># 10 numbers of either -1 or 1
+y = np.random.choice([-1, 1], size=10)
+y
 </pre></div>
 </div>
 </div>
@@ -460,9 +460,9 @@ X_n = \sum_{i=1}^n Y_i
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sum them up using cumulative sum</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">x</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># sum them up using cumulative sum
+x = np.cumsum(y)
+x
 </pre></div>
 </div>
 </div>
@@ -475,17 +475,17 @@ X_n = \sum_{i=1}^n Y_i
 <p>The intuition behind random walks comes a bit clearer when we begin to plot them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_walk</span><span class="p">(</span><span class="n">steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-	<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">steps</span><span class="p">)</span>
-	<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-	<span class="k">return</span> <span class="n">x</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def random_walk(steps: int):
+	y = np.random.choice([-1, 1], size=steps)
+	x = np.cumsum(y)
+	return x
 
-<span class="n">steps</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random walk with </span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">);</span>
+steps = 1000
+x = random_walk(steps)
+plt.plot(x)
+plt.axhline(0.0, c=&#39;r&#39;)
+plt.xlim(left=0)
+plt.title(f&quot;Random walk with {steps} steps&quot;);
 </pre></div>
 </div>
 </div>
@@ -497,13 +497,13 @@ X_n = \sum_{i=1}^n Y_i
 <p>We can also run multiple random walks next to each other.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steps</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
-	<span class="n">x</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
-	<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random walk with </span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>steps = 1000
+for i in range(20):
+	x = random_walk(steps)
+	plt.plot(x)
+plt.axhline(0.0, c=&#39;r&#39;)
+plt.xlim(left=0)
+plt.title(f&quot;Random walk with {steps} steps&quot;);
 </pre></div>
 </div>
 </div>
@@ -576,33 +576,33 @@ p~&amp;\text{else}\\
 <p>We will only implement an imperative way to implement such a limited random walk, but it could be also implemented as a markov chain.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_walk_boundary</span><span class="p">(</span><span class="n">steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-	<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-	<span class="n">x_cur</span> <span class="o">=</span> <span class="mi">0</span>
-	<span class="n">step_size</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def random_walk_boundary(steps: int, limit: int):
+	y = []
+	x_cur = 0
+	step_size = 1
 
-	<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
-		<span class="c1"># check if we hit a barrier</span>
-		<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_cur</span><span class="p">)</span> <span class="o">+</span> <span class="n">step_size</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span>
-			<span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x_cur</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">step_size</span><span class="p">)</span>
-		<span class="k">else</span><span class="p">:</span>
-			<span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">step_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">step_size</span><span class="p">])</span>
-		<span class="n">x_cur</span> <span class="o">+=</span> <span class="n">step</span>
-		<span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+	for _ in range(steps):
+		# check if we hit a barrier
+		if np.abs(x_cur) + step_size &gt; limit:
+			step = np.sign(x_cur) * (-1 * step_size)
+		else:
+			step = np.random.choice([step_size, -1*step_size])
+		x_cur += step
+		y.append(step)
 
-	<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-	<span class="k">return</span> <span class="n">x</span>
+	x = np.cumsum(y)
+	return x
 
-<span class="n">steps</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">limit</span> <span class="o">=</span> <span class="mi">10</span>
+steps = 1000
+limit = 10
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">random_walk_boundary</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">limit</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">limit</span><span class="p">]:</span>
-	<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random walk with </span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2"> steps and limit </span><span class="si">{</span><span class="n">limit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+x = random_walk_boundary(steps, limit)
+plt.plot(x)
+plt.axhline(0.0, c=&#39;r&#39;)
+for l in [limit, -1*limit]:
+	plt.axhline(l, c=&#39;g&#39;)
+plt.xlim(left=0)
+plt.title(f&quot;Random walk with {steps} steps and limit {limit}&quot;);
 </pre></div>
 </div>
 </div>
@@ -617,12 +617,12 @@ p~&amp;\text{else}\\
 For this we will take a look at the distribution (we will count how often each stage of the random walk is passed) of two very longe traditional random walks, one limited, the other not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-	<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random_walk</span><span class="p">(</span><span class="mi">100000</span><span class="p">))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of a non-limited random walk&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = []
+for _ in range(100):
+	x.append(random_walk(100000))
+x = np.concatenate(x)
+pd.Series(x).hist(bins=100)
+plt.title(&quot;Distribution of a non-limited random walk&quot;);
 </pre></div>
 </div>
 </div>
@@ -634,12 +634,12 @@ For this we will take a look at the distribution (we will count how often each s
 This phonomenon is described by the <a class="reference external" href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-	<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random_walk_boundary</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of a limited random walk&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = []
+for _ in range(100):
+	x.append(random_walk_boundary(1000, limit=20))
+x = np.concatenate(x)
+pd.Series(x).hist(bins=20)
+plt.title(&quot;Distribution of a limited random walk&quot;)
 </pre></div>
 </div>
 </div>
@@ -655,14 +655,14 @@ This phonomenon is described by the <a class="reference external" href="https://
 <p>We only get noise from it, see.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">48000</span>
-<span class="c1"># 16 bits divided by 2 (b/c we need to cover + and -)</span>
-<span class="n">amp</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="mi">16</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mf">0.4</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sample_rate = 48000
+# 16 bits divided by 2 (b/c we need to cover + and -)
+amp = ((2**16)/2)*0.4
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">(</span><span class="n">sample_rate</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
-<span class="c1"># scale x to be between -1 and 1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">amp</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span> <span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">))</span>
+x = random_walk(sample_rate*4)
+# scale x to be between -1 and 1
+x = x/np.max(np.abs(x))
+display(Audio(data=(x*amp).astype(np.int16) , rate=sample_rate))
 </pre></div>
 </div>
 </div>
@@ -677,10 +677,10 @@ This phonomenon is described by the <a class="reference external" href="https://
 <p>This generates only 4 seconds of noise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">random_walk_boundary</span><span class="p">(</span><span class="n">sample_rate</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="c1"># scale x to be between -1 and 1</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">amp</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span> <span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = random_walk_boundary(sample_rate*4, limit=200)
+# scale x to be between -1 and 1
+x = x/np.max(np.abs(x))
+display(Audio(data=(x*amp).astype(np.int16) , rate=sample_rate))
 </pre></div>
 </div>
 </div>
@@ -708,29 +708,29 @@ X_{n+1} = X_n + Y_n
 <p>Lets strat programming it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">second_order_random_walk</span><span class="p">(</span><span class="n">steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="c1"># start at 0</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">ys</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">:</span>
-        <span class="n">next_step</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">next_step</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span>
-            <span class="c1"># invert the movement of the step if we would exceed</span>
-            <span class="c1"># the barrier</span>
-            <span class="n">next_step</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_step</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">ys</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def second_order_random_walk(steps: int, limit: int):
+    # start at 0
+    xs = [0]
+    ys = random_walk(steps)
+    for y in ys:
+        next_step = xs[-1] + y
+        if np.abs(next_step) &gt; limit:
+            # invert the movement of the step if we would exceed
+            # the barrier
+            next_step = xs[-1] + (np.sign(y) * (-1)) * np.abs(y)
+        xs.append(next_step)
+    return np.array(xs), ys
 
-<span class="n">limit</span> <span class="o">=</span> <span class="mi">200</span>
+limit = 200
 
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">second_order_random_walk</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X_n$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$Y_n$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">limit</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">limit</span><span class="p">]:</span>
-	<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Second order random walk&quot;</span><span class="p">)</span>
+x, y = second_order_random_walk(2000, limit)
+plt.plot(x, label=&quot;$X_n$&quot;)
+plt.plot(y, label=&quot;$Y_n$&quot;)
+plt.legend()
+plt.axhline(0.0, c=&#39;r&#39;)
+for l in [limit, -1*limit]:
+	plt.axhline(l, c=&#39;g&#39;)
+plt.title(&quot;Second order random walk&quot;)
 </pre></div>
 </div>
 </div>
@@ -744,19 +744,19 @@ X_{n+1} = X_n + Y_n
 <p>We note that it is possible to still exceed the limits if the values of <span class="math notranslate nohighlight">\((Y_n)_{n \in \mathbb{N}}\)</span> exceed <span class="math notranslate nohighlight">\(2l\)</span> as then the movement against the actual direction exceeds the boundary on the other side.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="mi">50</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>limit = 50
 
-<span class="c1"># keeps the randomness reproducible</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+# keeps the randomness reproducible
+np.random.seed(40)
 
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">second_order_random_walk</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X_n$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$Y_n$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">limit</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">limit</span><span class="p">]:</span>
-	<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Second order random walk which exceeds its limits&quot;</span><span class="p">);</span>
+x, y = second_order_random_walk(2000, limit)
+plt.plot(x, label=&quot;$X_n$&quot;)
+plt.plot(y, label=&quot;$Y_n$&quot;)
+plt.legend()
+plt.axhline(0.0, c=&#39;r&#39;)
+for l in [limit, -1*limit]:
+	plt.axhline(l, c=&#39;g&#39;)
+plt.title(&quot;Second order random walk which exceeds its limits&quot;);
 </pre></div>
 </div>
 </div>
@@ -769,29 +769,29 @@ Note that a different behaviour such as going <span class="math notranslate nohi
 This restriction is not made by Xenakis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">second_order_random_walk</span><span class="p">(</span><span class="n">steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="c1"># start at 0</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">ys</span> <span class="o">=</span> <span class="n">random_walk_boundary</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">:</span>
-        <span class="n">next_step</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">next_step</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span>
-            <span class="c1"># invert the movement of the step if we would exceed</span>
-            <span class="c1"># the barrier</span>
-            <span class="n">next_step</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_step</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">ys</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def second_order_random_walk(steps: int, limit: int):
+    # start at 0
+    xs = [0]
+    ys = random_walk_boundary(steps, limit)
+    for y in ys:
+        next_step = xs[-1] + y
+        if np.abs(next_step) &gt; limit:
+            # invert the movement of the step if we would exceed
+            # the barrier
+            next_step = xs[-1] + (np.sign(y) * (-1)) * np.abs(y)
+        xs.append(next_step)
+    return np.array(xs), ys
 
-<span class="n">limit</span> <span class="o">=</span> <span class="mi">100</span>
+limit = 100
 
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">second_order_random_walk</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X_n$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$Y_n$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="p">[</span><span class="n">limit</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">limit</span><span class="p">]:</span>
-	<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Second order random walk&quot;</span><span class="p">);</span>
+x, y = second_order_random_walk(20000, limit)
+plt.plot(x, label=&quot;$X_n$&quot;)
+plt.plot(y, label=&quot;$Y_n$&quot;)
+plt.legend()
+plt.axhline(0.0, c=&#39;r&#39;)
+for l in [limit, -1*limit]:
+	plt.axhline(l, c=&#39;g&#39;)
+plt.title(&quot;Second order random walk&quot;);
 </pre></div>
 </div>
 </div>
@@ -802,12 +802,12 @@ This restriction is not made by Xenakis.</p>
 <p>Lets take a look at the distribution of the second order random walk.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-	<span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">second_order_random_walk</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">20</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of a second order, limited random walk&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = []
+for _ in range(10):
+	x.append(second_order_random_walk(10000, limit=20)[0])
+x = np.concatenate(x)
+pd.Series(x).hist(bins=20)
+plt.title(&quot;Distribution of a second order, limited random walk&quot;);
 </pre></div>
 </div>
 </div>
@@ -819,11 +819,11 @@ This restriction is not made by Xenakis.</p>
 Lets listen to it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">second_order_random_walk</span><span class="p">(</span><span class="n">sample_rate</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="c1"># scale x to be between -1 and 1</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Audio</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">amp</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span> <span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x, _ = second_order_random_walk(sample_rate*4, limit=1000)
+# scale x to be between -1 and 1
+plt.plot(x)
+x = x/np.max(np.abs(x))
+display(Audio(data=(x*amp).astype(np.int16) , rate=sample_rate))
 </pre></div>
 </div>
 </div>
